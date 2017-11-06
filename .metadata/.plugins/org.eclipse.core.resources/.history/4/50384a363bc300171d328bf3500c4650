@@ -1,0 +1,145 @@
+package Turtle;
+
+
+import turtlePck.TurtleGraphicsWindow;
+
+
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author ZTILabPI
+ */
+public class TurtleAlgorithms extends TurtleGraphicsWindow{
+    
+    public void positioningTurtle(int angle){
+        right(angle);
+    }
+
+     
+    public void drzewo(int bok, int minBok, int a) {
+    	if(bok<minBok) {
+    		return;
+    	}
+    	forward(bok);
+    	right(a/2);
+    	drzewo(bok/2,minBok,a);
+    	left(a);
+    	drzewo(bok/2,minBok,a);
+    	right(a/2);
+    	back(bok);
+    }
+    
+    public void cuteTree(int bok, int minBok, int a, int shift) {
+    	if(bok<minBok) {
+    		return;
+    	}
+    	left(a/2);
+    	forward(bok-shift);
+    	cuteTree(bok/2,minBok,a,shift);
+    	back(bok-shift);
+    	right(a/2);
+    	forward(shift);
+    	right(a);
+    	cuteTree(bok/2,minBok,a,shift);
+    }
+    public void kickedTree(int bok, int minBok, int a, int difference) {
+    	if(bok<minBok) {
+    		return;
+    	}
+    	forward(bok);
+    	left(a/2);
+    	kickedTree(bok/2,minBok,a,difference);
+    	back(bok);
+    	right(a);
+    	forward(bok);
+    	kickedTree(bok/2-difference,minBok,a,difference);
+    	back(bok);
+    	left(a/2);
+    }
+    
+    	
+    	public void cuteTree2(int bok, int minBok, int a, int shift) {
+        	if(bok<minBok) {
+        		return;
+        	}
+        	left(a/2);
+        	forward(bok-shift);
+        	cuteTree2(bok/2,minBok,a,shift);
+        	back(bok-shift);
+        	right(a/2);
+        	forward(shift);
+        	right(a/2);
+        	forward(bok-shift);
+        	cuteTree2(bok/2,minBok,a,shift);
+        	back(bok-shift);
+        	left(a/2);
+        	back(shift);
+    	
+  	
+    	
+    }
+    	
+    	 public void sierpinski2(int bok, int minBok ){
+             if (bok<minBok) {
+                return;
+            }
+             
+          }
+    	 
+    	public void trojkaty(int bokMin, int zmiana, int bokMax) {
+    		if(bokMin>bokMax) {
+    			return;
+    		}
+    		forward(bokMin);
+    		right(120);
+    		forward(bokMin);
+    		right(120);
+    		forward(bokMin);
+    		right(120);
+    		trojkaty(bokMin+zmiana,zmiana,bokMax);
+    	}
+    	 
+    public void sierpinski(int bok, int minBok ){
+         if (bok<minBok) {
+            return;
+        }
+         for(int i=0;i<3;i++) {
+        	 sierpinski(bok/2, minBok);
+             forward(bok);
+             right(120);
+         }
+              
+
+      }
+
+    
+  
+public void snowFlake(int n, int bok){
+    if (n==0){
+        forward(bok);
+        return;
+    }
+    snowFlake(n-1, bok/3);
+    right(60);
+    snowFlake(n-1, bok/3);
+    left(120);
+    snowFlake(n-1, bok/3);
+    right(60);
+    snowFlake(n-1, bok/3);
+
+}
+
+
+public void callSnowFlake(int n, int bok){
+    for(int i=1; i<4; i++){
+      snowFlake(n, bok);
+      left(120);
+    }
+}
+
+}
